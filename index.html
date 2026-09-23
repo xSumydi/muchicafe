@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Müchi Café</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body id="inicio">
+
+    <!-- MENÚ LATERAL -->
+
+    <div class="overlay" id="overlay"></div>
+
+    <aside class="side-menu" id="sideMenu">
+
+        <button class="close-menu" id="closeMenu">
+            ×
+        </button>
+
+        <div class="side-logo">
+            <span></span>
+        </div>
+
+        <nav>
+
+            <a href="#menu" class="menu-link">
+                Menú
+            </a>
+
+            <a href="#ubicacion" class="menu-link">
+                Dirección y Horario
+            </a>
+
+            <a href="#redes" class="menu-link">
+                Nuestras Redes
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <!-- Botón de tres líneas -->
+
+        <button
+            class="hamburger"
+            id="openMenu"
+            aria-label="Abrir menú"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+        <!-- Logo decorativo -->
+
+        <div class="brand">
+
+            <img src="letra.png" alt="Müchi Café" width="auto" height="30">
+
+        </div>
+
+        <!-- BOTÓN MODO CLARO / OSCURO -->
+
+<button
+    class="theme-toggle"
+    id="themeToggle"
+    aria-label="Activar modo oscuro"
+    title="Cambiar modo"
+>
+    <img
+        src="muchi.png"
+        class="header-mascot"
+        alt="Cambiar modo"
+    >
+</button>
+
+    </header>
+
+    <!-- BEBIDAS DE TEMPORADA -->
+
+    <section class="hero">
+
+        <div class="season-text">
+            Bebidas de temporada
+        </div>
+
+        <div
+            class="carousel"
+            id="carousel"
+        >
+            <!-- Flecha izquierda -->
+
+            <button
+                class="carousel-button previous"
+                id="prev"
+                aria-label="Bebida anterior"
+            >
+                ‹
+            </button>
+
+            <!-- Contenido -->
+
+            <div class="carousel-content">
+
+                <h1
+                    class="carousel-title"
+                    id="drinkTitle"
+                >
+                    Latte Frio
+                </h1>
+
+                <div class="drink-images">
+
+                    <!-- Bebida anterior -->
+
+                    <img
+                        src="img/bebida2.png"
+                        class="drink side-drink left-drink"
+                        alt="Matcha Latte"
+                    >
+
+                    <!-- Bebida principal -->
+
+                    <img
+                        src="img/bebida1.png"
+                        class="drink main-drink"
+                        alt="Taro Latte"
+                    >
+
+                    <!-- Bebida siguiente -->
+
+                    <img
+                        src="img/bebida3.png"
+                        class="drink side-drink right-drink"
+                        alt="Latte Frio"
+                    >
+
+                </div>
+
+            </div>
+
+            <!-- Flecha derecha -->
+
+            <button
+                class="carousel-button next"
+                id="next"
+                aria-label="Siguiente bebida"
+            >
+                ›
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+
+    <main>
+
+        <!-- MENÚ -->
+
+        <section
+            class="menu-section"
+            id="menu"
+        >
+            <h1>
+                MENU
+            </h1>
+
+            <div class="menu-columns">
+
+                <!-- BEBIDAS -->
+
+                <div class="menu-category">
+
+                    <h2>
+                        Bebidas
+                    </h2>
+
+                    <ul>
+
+                        <li>
+                             <span class="fuente-titulo">Americano</span>
+                            <strong>$00mx</strong>
+                        </li>
+
+                        <li>
+                            <span class="fuente-titulo">Capuccino</span>
+                            <strong>$00mx</strong>
+                        </li>
+
+                        <li>
+                            <span class="fuente-titulo">Cold Brew</span>
+                            <strong>$00mx</strong>
+                        </li>
+
+                        <li>
+                            <span class="fuente-titulo">Cortado</span>
+                            <strong>$00mx</strong>
+                        </li>
+
+                        <li>
+                            <span class="fuente-titulo">Espresso</span>
+                            <strong>$00mx</strong>
+                        </li>
+
+                        <li>
+                            <span class="fuente-titulo">Flat White</span>
+                            <strong>$00mx</strong>
+                        </li>
+
+                        <li>
+                            <span class="fuente-titulo">Latte</span>
+                            <strong>$00mx</strong>
+                        </li>
+
+                        <li>
+                            <span class="fuente-titulo">V60</span>
+                            <strong>$00mx</strong>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <!-- ALIMENTOS -->
+
+                <div class="menu-category">
+
+                    <h2>
+                        Alimentos
+                    </h2>
+
+                    <ul>
+
+                        <li>
+                            <span class="fuente-titulo">Brownies</span>
+                            <strong>$00mx</strong>
+                        </li>
+
+                        <li>
+                            <span class="fuente-titulo">Crepas</span>
+                            <strong>$00mx</strong>
+                        </li>
+
+                        <li>
+                            <span class="fuente-titulo">Galletas</span>
+                            <strong>$00mx</strong>
+                        </li>
+
+                        <li>
+                            <span class="fuente-titulo">Pan del día</span>
+                            <strong>$00mx</strong>
+                        </li>
+
+                        <li>
+                            <span class="fuente-titulo">Rebanadas</span>   
+                            <strong>$00mx</strong>
+                        </li>
+
+                        <li>
+                            <span class="fuente-titulo">Waffles</span>
+                            <strong>$00mx</strong>
+                        </li>
+
+                        <li>
+                            
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- TARJETA DE CLIENTE FRECUENTE -->
+
+<section class="wallet-section">
+
+    <a href="https://won.cards/Hs4" 
+       class="wallet-link" 
+       target="_blank">
+
+        <img
+            src="img/Wallet.jpg"
+            alt="Tarjeta de cliente frecuente"
+            class="wallet-image"
+        >
+
+    </a>
+
+</section>
+
+        <!-- UBICACIÓN + HORARIO -->
+
+        <section
+            class="location-section"
+            id="ubicacion"
+        >
+            <!-- MAPA -->
+
+            <div class="location-card">
+
+                <h2>
+                    <span class="fuente-titulo">Encuéntranos en:</span>
+                </h2>
+
+                <div class="map-container">
+
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3765.411715313797!2d-99.08366933837175!3d19.307932731869684!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85ce0316e821e187%3A0xdddc21dbad7cfab9!2sTacos%20culeros!5e0!3m2!1ses-419!2smx!4v1790159386309!5m2!1ses-419!2smx" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                        title="Ubicación Müchi Café"
+                    >
+                    </iframe>
+
+                </div>
+
+            </div>
+
+            <!-- HORARIO -->
+
+            <div class="schedule">
+
+                <h2>
+                    HORARIO
+                </h2>
+
+                <div class="schedule-day">
+
+                    <h3>
+                        <span class="fuente-titulo">Lunes a Viernes</span>
+                    </h3>
+
+                    <p>
+                        00:00 a.m. - 00:00 p.m.
+                    </p>
+
+                </div>
+
+                <div class="schedule-day">
+
+                    <h3>
+                        <span class="fuente-titulo">Sábados</span>
+                    </h3>
+
+                    <p>
+                        00:00 a.m. - 00:00 p.m.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER / REDES -->
+
+    <footer id="redes">
+
+
+        <!-- Imagen de MüCHI -->
+
+        <div class="footer-mascot">
+
+            <img src="headmuchi.png" alt="Muchi" width="100%" height="100%"
+            >
+
+        </div>
+
+        <!-- Contenido del footer -->
+
+        <div class="footer-content">
+
+            <!-- Volver arriba -->
+
+            <button
+                id="backToTop"
+                class="back-top"
+                disabled
+                hidden
+            >
+                <span class="fuente-titulo">Volver al inicio</span>
+            </button>
+
+            <p>
+                <span class="fuente-titulo">Siguenos en nuestras redes</span>
+            </p>
+
+            <!-- Redes -->
+
+            <div class="socials">
+
+                <a
+                    href="https://www.instagram.com/muchicafe/"
+                    target="_blank"
+                    aria-label="Instagram"
+                ><img src="instagram.png" alt="Instagram" width="auto" height="30">
+                </a>
+
+                <a
+                    href="https://www.tiktok.com/@muchi.cafe?"
+                    target="_blank"
+                    aria-label="TikTok"
+                ><img src="tiktok.png" alt="TikTok" width="auto" height="30">
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
