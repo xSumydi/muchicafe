@@ -69,9 +69,9 @@ const drinks = [
     },
 
     {
-        title: "LATTE FRIO",
+        title: "CHAI LATTE",
         image: "img/bebida3.png",
-        alt: "Latte Frio"
+        alt: "Chai Latte"
     }
 
 ];
