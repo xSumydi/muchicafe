@@ -641,7 +641,7 @@ footer {
 .footer-mascot {
     position: absolute;
 
-    left: 0%;
+    left: 50%;
     bottom: 0;
 
     transform: translateX(-50%);
@@ -673,7 +673,7 @@ footer {
 
     transform: translateX(-50%);
 
-    width: 0%;
+    width: 100%;
 
     display: flex;
 
