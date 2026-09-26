@@ -641,7 +641,7 @@ footer {
 .footer-mascot {
     position: absolute;
 
-    left: 50%;
+    left: 0%;
     bottom: 0;
 
     transform: translateX(-50%);
@@ -673,7 +673,7 @@ footer {
 
     transform: translateX(-50%);
 
-    width: 100%;
+    width: 0%;
 
     display: flex;
 
@@ -819,13 +819,16 @@ footer {
     }
 
     .season-text {
-        font-size: 14px;
+
+        top: 15px;
+
+        font-size: 20px;
     }
 
     .carousel-title {
-        top: 55px;
+        top: 35px;
 
-        font-size: 48px;
+        font-size: 58px;
     }
 
     .drink-images {
@@ -835,8 +838,8 @@ footer {
     }
 
     .main-drink {
-        width: 175px;
-        height: 260px;
+        width: 275px;
+        height: 350px;
     }
 
     .side-drink {
@@ -922,7 +925,7 @@ footer {
     .footer-content {
         left: 50%;
 
-        bottom: 20px;
+        bottom: 10px;
 
         width: 100%;
 
@@ -932,7 +935,7 @@ footer {
     }
 
     .footer-content p {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .back-top {
