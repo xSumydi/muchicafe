@@ -361,3 +361,126 @@ themeToggle.addEventListener(
 /* INICIAR CARRUSEL */
 
 updateCarousel();
+
+/* SISTEMA CONTROLADOR DE SECCIONES LEGALES (MÜCHI CAFÉ) */
+
+document.addEventListener("DOMContentLoaded", function() {
+
+    const pantallaPrivacidad = document.getElementById("pantallaPrivacidad");
+
+    const pantallaTerminos = document.getElementById("pantallaTerminos");
+
+    const btnPrivacidad = document.getElementById("btnPrivacidad");
+
+    const btnTerminos = document.getElementById("btnTerminos");
+
+    const logoHome = document.getElementById("logoHome");
+
+    // Listado de contenedores de la cafetería que se van a alternar
+    const componentesInicio = ['.hero', '.menu-section', '.location-section', '.wallet-section', '.schedule'];
+
+    // Función global para mostrar u ocultar el menú de la cafetería
+    function alternarInicio(mostrar) {
+
+        componentesInicio.forEach(selector => {
+
+            const elemento = document.querySelector(selector);
+
+            if (elemento) {
+
+                if (mostrar) elemento.classList.remove("d-none");
+
+                else elemento.classList.add("d-none");
+            }
+        });
+    }
+
+    // Función para ocultar de golpe ambas pantallas de texto largo
+
+    function limpiarPantallasLegales() {
+
+        pantallaPrivacidad.classList.add("d-none");
+
+        pantallaTerminos.classList.add("d-none");
+
+    }
+
+    // Función unificada para regresar al menú principal de forma limpia
+
+    function regresarAlInicio() {
+
+        limpiarPantallasLegales();
+
+        alternarInicio(true);
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+    }
+
+    // 1. Clic en: Enlace Aviso de Privacidad
+
+    if (btnPrivacidad) {
+
+        btnPrivacidad.addEventListener("click", function(e) {
+
+            e.preventDefault();
+
+            alternarInicio(false);
+
+            limpiarPantallasLegales();
+
+            pantallaPrivacidad.classList.remove("d-none");
+
+            window.scrollTo({ top: 0, behavior: "smooth" });
+
+        });
+    }
+
+    // 2. Clic en: Enlace Términos y Condiciones
+
+    if (btnTerminos) {
+
+        btnTerminos.addEventListener("click", function(e) {
+
+            e.preventDefault();
+
+            alternarInicio(false); // Desaparece el inicio
+
+            limpiarPantallasLegales();
+
+            pantallaTerminos.classList.remove("d-none");
+
+            window.scrollTo({ top: 0, behavior: "smooth" });
+
+        });
+    }
+
+    // 3. Clic en: Logo decorativo del Header (Regresar al inicio)
+
+    if (logoHome) {
+
+        logoHome.style.cursor = "pointer";
+
+        logoHome.addEventListener("click", function(e) {
+
+            e.preventDefault();
+
+            regresarAlInicio();
+
+        });
+    }
+
+    // INTEGRACIÓN CON MENÚ LATERAL
+    const enlacesMenuLateral = document.querySelectorAll(".menu-link");
+
+    enlacesMenuLateral.forEach(link => {
+
+        link.addEventListener("click", function() {
+
+            limpiarPantallasLegales();
+
+            alternarInicio(true);
+            
+        });
+    });
+});
