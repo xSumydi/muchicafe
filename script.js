@@ -1,486 +1,1083 @@
-/* MENÚ LATERAL */
+/* FUENTES*/
 
-const openMenu = document.getElementById("openMenu");
-
-const closeMenu = document.getElementById("closeMenu");
-
-const sideMenu = document.getElementById("sideMenu");
-
-const overlay = document.getElementById("overlay");
-
-const menuLinks = document.querySelectorAll(".menu-link");
-
-function showMenu() {
-
-    sideMenu.classList.add("active");
-
-    overlay.classList.add("active");
-
+@font-face {
+    font-family: "MuchiTitulos";
+    src: url("Good Old DOS.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 
-function hideMenu() {
-
-    sideMenu.classList.remove("active");
-
-    overlay.classList.remove("active");
-
+@font-face {
+    font-family: "MuchiTexto";
+    src: url("FairfaxItalic.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
 }
 
-openMenu.addEventListener(
-    "click",
-    showMenu
-);
+.fuente-titulo {
+    font-family: "MuchiTitulos", sans-serif;
+}
 
-closeMenu.addEventListener(
-    "click",
-    hideMenu
-);
 
-overlay.addEventListener(
-    "click",
-    hideMenu
-);
+/* COLORES*/
 
-/* Cerrar menú al seleccionar una opción */
+:root {
+    --principal: #1A122B;
+    --secundario: #4B1E4A;
+    --acento: #E8B4B8;
+    --claro1: #D6CDE8;
+    --claro2: #F2EBE7;
+}
+/* VARIABLES DEL MODO CLARO / OSCURO */
 
-menuLinks.forEach(function(link) {
+:root {
+    --fondo: #F2EBE7;
+    --texto: #1A122B;
+}
 
-    link.addEventListener(
-        "click",
-        hideMenu
-    );
+body.dark-mode {
+    --fondo: #1A122B;
+    --texto: #F2EBE7;
+}
 
-});
+/* CONFIGURACIÓN GENERAL*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body { 
+    background: var(--fondo); 
+    color: var(--texto); 
+    font-family: "MuchiTexto", monospace; 
+    overflow-x: hidden;
+
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease;
+}
+
+
+/* HEADER*/
+
+.header {
+    height: 60px;
+    background: var(--claro1);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    z-index: 10;
+}
+
+
+/* HAMBURGUESA */
+
+.hamburger {
+    position: absolute;
+    left: 8px;
+    top: 18px;
+
+    width: 28px;
+    height: 25px;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+    padding: 2px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+
+    background: var(--texto);
+
+    display: block;
+}
+
+
+/* LOGO */
+
+.brand {
+    color: var(--principal);
+    font-size: 28px;
+    pointer-events: none;
+}
+
+.brand-muchi {
+    font-family: "MuchiTitulos", serif;
+}
+
+.brand-cafe {
+    font-family: "MuchiTexto", monospace;
+    font-weight: bold;
+}
+
+/* BOTÓN MODO CLARO / OSCURO */
+
+.theme-toggle {
+    position: absolute;
+
+    right: 10px;
+    top: 5px;
+
+    width: 50px;
+    height: 50px;
+
+    padding: 0;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.theme-toggle:hover .header-mascot {
+    transform: scale(1.1);
+}
+
+.theme-toggle:active .header-mascot {
+    transform: scale(0.92);
+}
+
+/* MASCOTA DEL HEADER */
+
+.header-mascot {
+    position: absolute;
+
+    right: 10px;
+    top: 0px;
+
+    width: 50px;
+    height: 50px;
+
+    object-fit: contain;
+    object-position: center;
+
+    pointer-events: none;
+
+transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+
+/* MENÚ LATERAL*/
+
+.side-menu {
+    position: fixed;
+
+    top: 0;
+    left: -300px;
+
+    width: 280px;
+    height: 100vh;
+
+    background: var(--principal);
+
+    z-index: 100;
+
+    padding: 30px;
+
+    transition: left 0.3s ease;
+
+    box-shadow: 5px 0 20px rgba(0, 0, 0, 0.25);
+}
+
+.side-menu.active {
+    left: 0;
+}
+
+
+/* FONDO OSCURO */
+
+.overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(26, 18, 43, 0.55);
+
+    z-index: 90;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.3s ease;
+}
+
+.overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* CERRAR */
+
+.close-menu {
+    position: absolute;
+
+    top: 15px;
+    right: 20px;
+
+    border: none;
+    background: transparent;
+
+    color: var(--claro2);
+
+    font-size: 35px;
+
+    cursor: pointer;
+}
+
+
+/* LOGO LATERAL */
+
+.side-logo {
+    color: var(--claro2);
+
+    font-family: "MuchiTitulos", serif;
+
+    font-size: 28px;
+
+    margin-top: 45px;
+    margin-bottom: 60px;
+}
+
+.side-logo span {
+    color: var(--acento);
+}
+
+
+/* LINKS */
+
+.side-menu nav {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.side-menu a {
+    color: var(--claro2);
+
+    text-decoration: none;
+
+    font-family: "MuchiTexto", monospace;
+
+    font-size: 20px;
+
+    transition: 0.2s;
+}
+
+.side-menu a:hover {
+    color: var(--acento);
+    transform: translateX(5px);
+}
+
+
+/* HERO*/
+
+.hero {
+    height: 420px;
+
+    background: var(--secundario);
+
+    position: relative;
+    overflow: hidden;
+
+    border-radius:
+        0 0 50% 50%
+        /
+        0 0 15% 15%;
+}
+
+
+/* TEXTO PEQUEÑO */
+
+.season-text {
+    position: relative;
+
+    z-index: 4;
+
+    color: var(--claro2);
+
+    text-align: center;
+
+    padding-top: 12px;
+
+    font-size: 16px;
+}
+
 
 /* CARRUSEL */
 
-const drinks = [
+.carousel {
+    width: 100%;
+    height: 100%;
 
-    {
-        title: "TARO LATTE",
-        image: "img/bebida1.png",
-        alt: "Taro Latte"
-    },
+    position: relative;
 
-    {
-        title: "MATCHA LATTE",
-        image: "img/bebida2.png",
-        alt: "Matcha Latte"
-    },
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    {
-        title: "CHAI LATTE",
-        image: "img/bebida3.png",
-        alt: "Chai Latte"
-    }
-
-];
-
-let currentDrink = 0;
-
-const drinkTitle =
-    document.getElementById("drinkTitle");
-
-
-const mainDrink =
-    document.querySelector(".main-drink");
-
-
-const leftDrink =
-    document.querySelector(".left-drink");
-
-
-const rightDrink =
-    document.querySelector(".right-drink");
-
-
-
-/* ACTUALIZAR CARRUSEL */
-
-function updateCarousel() {
-
-    const current =
-        drinks[currentDrink];
-
-
-    const previousIndex =
-        (currentDrink - 1 + drinks.length)
-        % drinks.length;
-
-
-    const nextIndex =
-        (currentDrink + 1)
-        % drinks.length;
-
-
-    /* Título */
-
-    drinkTitle.textContent =
-        current.title;
-
-
-    /* Imagen principal */
-
-    mainDrink.src =
-        current.image;
-
-    mainDrink.alt =
-        current.alt;
-
-
-    /* Imagen izquierda */
-
-    leftDrink.src =
-        drinks[previousIndex].image;
-
-    leftDrink.alt =
-        drinks[previousIndex].alt;
-
-
-    /* Imagen derecha */
-
-    rightDrink.src =
-        drinks[nextIndex].image;
-
-    rightDrink.alt =
-        drinks[nextIndex].alt;
-
-
-    /* Animación */
-
-    mainDrink.animate(
-
-        [
-            {
-                opacity: 0,
-
-                transform:
-                    "scale(0.90)"
-            },
-
-            {
-                opacity: 1,
-
-                transform:
-                    "scale(1)"
-            }
-        ],
-
-        {
-            duration: 250,
-
-            easing: "ease-out"
-        }
-
-    );
-
+    touch-action: pan-y;
 }
 
-/* SIGUIENTE BEBIDA */
+.carousel-content {
+    width: 100%;
+    height: 100%;
 
-function nextDrink() {
-
-    currentDrink++;
-
-    if (
-        currentDrink >=
-        drinks.length
-    ) {
-
-        currentDrink = 0;
-
-    }
-
-    updateCarousel();
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* BEBIDA ANTERIOR */
 
-function previousDrink() {
+/* TÍTULO */
 
-    currentDrink--;
+.carousel-title {
+    position: absolute;
 
-    if (
-        currentDrink < 0
-    ) {
+    z-index: 1;
 
-        currentDrink =
-            drinks.length - 1;
+    top: 20px;
 
-    }
+    width: 100%;
 
-    updateCarousel();
+    text-align: center;
 
+    color: var(--claro2);
+
+    font-family: "MuchiTitulos", monospace;
+
+    font-size: clamp(40px, 9vw, 100px);
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    pointer-events: none;
 }
 
-document
-    .getElementById("next")
-    .addEventListener(
-        "click",
-        nextDrink
-    );
 
+/* IMÁGENES */
 
-document
-    .getElementById("prev")
-    .addEventListener(
-        "click",
-        previousDrink
-    );
+.drink-images {
+    position: absolute;
 
+    bottom: 0;
 
+    width: 100%;
+    height: 300px;
 
-/* SWIPE EN CELULAR */
+    display: flex;
 
-const carousel =
-    document.getElementById("carousel");
+    align-items: flex-end;
+    justify-content: center;
 
-
-let touchStartX = 0;
-
-let touchEndX = 0;
-
-carousel.addEventListener(
-    "touchstart",
-    function(event) {
-
-        touchStartX =
-            event.changedTouches[0]
-                .screenX;
-
-    }
-);
-
-carousel.addEventListener(
-    "touchend",
-    function(event) {
-
-        touchEndX =
-            event.changedTouches[0]
-                .screenX;
-
-        handleSwipe();
-
-    }
-);
-
-function handleSwipe() {
-
-    const difference =
-        touchStartX - touchEndX;
-
-
-    /* Deslizar hacia la izquierda */
-
-    if (
-        difference > 50
-    ) {
-
-        nextDrink();
-
-    }
-
-
-    /* Deslizar hacia la derecha */
-
-    if (
-        difference < -50
-    ) {
-
-        previousDrink();
-
-    }
-
+    gap: 10px;
 }
+
+.drink {
+    object-fit: contain;
+
+    user-select: none;
+
+    -webkit-user-drag: none;
+}
+
+.main-drink {
+    width: 250px;
+    height: 380px;
+
+    z-index: 3;
+}
+
+.side-drink {
+    width: 140px;
+    height: 150px;
+
+    z-index: 2;
+}
+
+
+/* FLECHAS */
+
+.carousel-button {
+    position: absolute;
+
+    z-index: 5;
+
+    top: 40%;
+
+    transform: translateY(-50%);
+
+    border: none;
+
+    background: transparent;
+
+    color: white;
+
+    font-family: "MuchiTitulos", sans-serif;
+
+    font-size: 40px;
+
+    cursor: pointer;
+
+    padding: 10px;
+}
+
+.previous {
+    left: 0;
+}
+
+.next {
+    right: 0;
+}
+
+.carousel-button:hover {
+    transform:
+        translateY(-50%)
+        scale(1.15);
+}
+
+
+/* MENÚ */
+
+.menu-section {
+    max-width: 1100px;
+
+    margin: auto;
+
+    padding: 50px 25px 70px;
+}
+
+.menu-section > h1 {
+    text-align: center;
+
+    font-family: "MuchiTitulos", monospace;
+
+    font-size: clamp(50px, 8vw, 100px);
+
+    margin-bottom: 40px;
+}
+
+.menu-columns {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 60px;
+}
+
+.menu-category h2 {
+    font-family: "MuchiTitulos", monospace;
+
+    font-size: clamp(24px, 3vw, 38px);
+
+    margin-bottom: 25px;
+}
+
+.menu-category ul {
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+.menu-category li {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: baseline;
+
+    gap: 15px;
+
+    font-size: clamp(16px, 2vw, 23px);
+}
+
+.menu-category strong {
+    white-space: nowrap;
+}
+
+
+/* UBICACIÓN*/
+
+.location-section {
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 40px 25px 80px;
+
+    display: grid;
+
+    grid-template-columns: 1.2fr 0.8fr;
+
+    align-items: center;
+
+    gap: 40px;
+}
+
+
+/* TARJETA MAPA */
+
+.location-card {
+    background: var(--secundario);
+
+    padding: 20px;
+
+    border-radius: 40px;
+}
+
+.location-card h2 {
+    color: var(--claro2);
+
+    text-align: center;
+
+    font-family: "MuchiTexto", monospace;
+
+    font-size: 27px;
+
+    margin-bottom: 15px;
+}
+
+
+/* MAPA */
+
+.map-container {
+    width: 100%;
+    height: 330px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+
+    border: 0;
+}
+
+
+/* HORARIO*/
+
+.schedule {
+    text-align: center;
+}
+
+.schedule h2 {
+    font-family: "MuchiTitulos", monospace;
+
+    font-size: clamp(40px, 6vw, 75px);
+
+    margin-bottom: 45px;
+}
+
+.schedule-day {
+    margin-bottom: 45px;
+}
+
+.schedule-day h3 {
+    font-family: "MuchiTexto", monospace;
+
+    font-size: 21px;
+
+    margin-bottom: 22px;
+}
+
+.schedule-day p {
+    font-size: 26px;
+}
+
+
+/* FOOTER */
+
+footer {
+    position: relative;
+
+    width: 100%;
+    height: 500px;
+
+    background: var(--fondo);
+
+    transition: background-color 0.35s ease;
+
+    overflow: visible;
+
+    padding: 0;
+
+    display: block;
+}
+
+
+/* IMAGEN DEL FOOTER */
+
+.footer-mascot {
+    position: absolute;
+
+    left: 50%;
+    bottom: 0;
+
+    transform: translateX(-50%);
+
+    width: 135%;
+
+    pointer-events: none;
+
+    z-index: 1;
+}
+
+.footer-mascot img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    max-width: none;
+}
+
+
+/* CONTENIDO DEL FOOTER */
+
+.footer-content {
+    position: absolute;
+
+    left: 50%;
+    bottom: 55px;
+
+    transform: translateX(-50%);
+
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 14px;
+
+    text-align: center;
+
+    z-index: 2;
+}
+
 
 /* VOLVER AL INICIO */
 
-const backToTop =
-    document.getElementById("backToTop");
+.back-top {
+    border: none;
+
+    background: transparent;
+
+    color: var(--texto);
+
+    font-family: "MuchiTexto", monospace;
+
+    font-size: 17px;
+
+    cursor: pointer;
+
+    padding: 0;
+    margin: 0;
+}
+
+.back-top:hover {
+    text-decoration: underline;
+}
 
 
-backToTop.addEventListener(
-    "click",
-    function() {
+/* TEXTO */
 
-        window.scrollTo({
+.footer-content p {
+    color: var(--texto);
 
-            top: 0,
+    font-family: "MuchiTexto", monospace;
 
-            behavior: "smooth"
+    font-size: 16px;
 
-        });
+    margin: 0;
+}
 
-    }
-);
 
-/* MODO CLARO / OSCURO */
+/* REDES */
 
-const themeToggle =
-    document.getElementById("themeToggle");
+.socials {
+    display: flex;
 
-themeToggle.addEventListener(
-    "click",
-    function() {
+    align-items: center;
 
-        document.body.classList.toggle("dark-mode");
+    justify-content: center;
 
-        const darkMode =
-            document.body.classList.contains("dark-mode");
+    gap: 20px;
+}
 
-        if (darkMode) {
+.socials a {
+    width: 42px;
+    height: 42px;
 
-            themeToggle.setAttribute(
-                "aria-label",
-                "Activar modo claro"
-            );
+    border-radius: 50%;
 
-            themeToggle.setAttribute(
-                "title",
-                "Activar modo claro"
-            );
+    background: var(--principal);
 
-        } else {
+    display: flex;
 
-            themeToggle.setAttribute(
-                "aria-label",
-                "Activar modo oscuro"
-            );
+    align-items: center;
 
-            themeToggle.setAttribute(
-                "title",
-                "Activar modo oscuro"
-            );
+    justify-content: center;
 
-        }
+    text-decoration: none;
 
-    }
-);
+    transition: transform 0.2s;
+}
 
-/* INICIAR CARRUSEL */
+.socials a:hover {
+    transform: scale(1.1);
+}
 
-updateCarousel();
 
-/* SISTEMA CONTROLADOR DE SECCIONES LEGALES (MÜCHI CAFÉ) */
+/* TABLET */
 
-document.addEventListener("DOMContentLoaded", function() {
+@media (max-width: 800px) {
 
-    const pantallaPrivacidad = document.getElementById("pantallaPrivacidad");
-
-    const pantallaTerminos = document.getElementById("pantallaTerminos");
-
-    const btnPrivacidad = document.getElementById("btnPrivacidad");
-
-    const btnTerminos = document.getElementById("btnTerminos");
-
-    const logoHome = document.getElementById("logoHome");
-
-    // Listado de contenedores de la cafetería que se van a alternar
-    const componentesInicio = ['.hero', '.menu-section', '.location-section', '.wallet-section', '.schedule'];
-
-    // Función global para mostrar u ocultar el menú de la cafetería
-    function alternarInicio(mostrar) {
-
-        componentesInicio.forEach(selector => {
-
-            const elemento = document.querySelector(selector);
-
-            if (elemento) {
-
-                if (mostrar) elemento.classList.remove("d-none");
-
-                else elemento.classList.add("d-none");
-            }
-        });
+    .location-section {
+        grid-template-columns: 1fr;
     }
 
-    // Función para ocultar de golpe ambas pantallas de texto largo
+}
 
-    function limpiarPantallasLegales() {
 
-        pantallaPrivacidad.classList.add("d-none");
+/* CELULAR */
 
-        pantallaTerminos.classList.add("d-none");
+@media (max-width: 600px) {
 
+    /* HEADER */
+
+    .header {
+        height: 60px;
     }
 
-    // Función unificada para regresar al menú principal de forma limpia
+    .brand {
+        font-size: 23px;
+    }
+    
+    .theme-toggle {
+    width: 45px;
+    height: 45px;
+}
 
-    function regresarAlInicio() {
-
-        limpiarPantallasLegales();
-
-        alternarInicio(true);
-
-        window.scrollTo({ top: 0, behavior: "smooth" });
-
+    .header-mascot {
+        width: 45px;
+        height: 45px;
     }
 
-    // 1. Clic en: Enlace Aviso de Privacidad
+    .wallet-section {
+    padding: 35px 15px;
+}
 
-    if (btnPrivacidad) {
+.wallet-link {
+    width: 100%;
+}
 
-        btnPrivacidad.addEventListener("click", function(e) {
+    /* HERO */
 
-            e.preventDefault();
+    .hero {
+        height: 410px;
 
-            alternarInicio(false);
-
-            limpiarPantallasLegales();
-
-            pantallaPrivacidad.classList.remove("d-none");
-
-            window.scrollTo({ top: 0, behavior: "smooth" });
-
-        });
+        border-radius:
+            0 0 50% 50%
+            /
+            0 0 10% 10%;
     }
 
-    // 2. Clic en: Enlace Términos y Condiciones
+    .season-text {
 
-    if (btnTerminos) {
+        top: 15px;
 
-        btnTerminos.addEventListener("click", function(e) {
-
-            e.preventDefault();
-
-            alternarInicio(false); // Desaparece el inicio
-
-            limpiarPantallasLegales();
-
-            pantallaTerminos.classList.remove("d-none");
-
-            window.scrollTo({ top: 0, behavior: "smooth" });
-
-        });
+        font-size: 20px;
     }
 
-    // 3. Clic en: Logo decorativo del Header (Regresar al inicio)
+    .carousel-title {
+        top: 35px;
 
-    if (logoHome) {
-
-        logoHome.style.cursor = "pointer";
-
-        logoHome.addEventListener("click", function(e) {
-
-            e.preventDefault();
-
-            regresarAlInicio();
-
-        });
+        font-size: 48px;
     }
 
-    // INTEGRACIÓN CON MENÚ LATERAL
-    const enlacesMenuLateral = document.querySelectorAll(".menu-link");
+    .drink-images {
+        height: 290px;
 
-    enlacesMenuLateral.forEach(link => {
+        gap: 0;
+    }
 
-        link.addEventListener("click", function() {
+    .main-drink {
+        width: 275px;
+        height: 350px;
+    }
 
-            limpiarPantallasLegales();
+    .side-drink {
+        width: 110px;
+        height: 170px;
+    }
 
-            alternarInicio(true);
-            
-        });
-    });
-});
+
+    /* MENÚ */
+
+    .menu-section {
+        padding: 35px 25px 50px;
+    }
+
+    .menu-columns {
+        grid-template-columns: 1fr;
+
+        gap: 45px;
+    }
+
+    .menu-category li {
+        font-size: 16px;
+    }
+
+
+    /* UBICACIÓN */
+
+    .location-section {
+        padding:
+            20px
+            20px
+            60px;
+    }
+
+    .location-card {
+        padding: 15px;
+
+        border-radius: 30px;
+    }
+
+    .map-container {
+        height: 280px;
+    }
+
+
+    /* HORARIO */
+
+    .schedule h2 {
+        font-size: 48px;
+    }
+
+
+    /* FOOTER CELULAR */
+
+    footer {
+        height: 360px;
+
+        overflow: hidden;
+    }
+
+    .footer-mascot {
+        left: 50%;
+
+        bottom: 0;
+
+        width: auto;
+
+        height: 100%;
+
+        transform: translateX(-50%);
+    }
+
+    .footer-mascot img {
+        width: auto;
+
+        height: 100%;
+
+        max-width: none;
+
+        display: block;
+    }
+
+    .footer-content {
+        left: 50%;
+
+        bottom: 10px;
+
+        width: 100%;
+
+        transform: translateX(-50%);
+
+        gap: 12px;
+    }
+
+    .footer-content p {
+        font-size: 13px;
+    }
+
+    .back-top {
+        font-size: 15px;
+    }
+
+    .socials {
+        gap: 16px;
+    }
+
+    .socials a {
+        width: 40px;
+        height: 40px;
+    }
+
+}
+
+/* TARJETA DE CLIENTE FRECUENTE */
+
+.wallet-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 20px;
+    background: var(--fondo);
+
+    box-sizing: border-box;
+}
+
+.wallet-link {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+
+    max-width: 500px;
+    width: 100%;
+}
+
+.wallet-image {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    margin: 0 auto;
+
+    transition:
+        transform 0.25s ease,
+        opacity 0.25s ease;
+}
+
+.wallet-link:hover .wallet-image {
+    transform: scale(1.02);
+}
+
+.wallet-link:active .wallet-image {
+    transform: scale(0.98);
+}
+
+
+/* CONFIGURACIÓN DE PANTALLAS LEGALES INDEPENDIENTES */
+
+.d-none {
+    display: none !important;
+}
+
+.legal-footer-links {
+    margin-top: 15px;
+    font-family: "MuchiTexto", monospace;
+    font-size: 15px;
+    position: relative;
+    z-index: 20;
+}
+
+.legal-footer-links a {
+    color: var(--texto);
+    text-decoration: none;
+    transition: color 0.2s ease;
+    margin: 0 8px;
+}
+
+.legal-footer-links a:hover {
+    color: var(--acento);
+}
+
+.legal-footer-links .separator {
+    color: var(--texto);
+    opacity: 0.4;
+}
+
+.legal-screen {
+    max-width: 800px;
+    margin: 40px auto 0;
+    padding: 60px 25px;
+    min-height: 60vh;
+    
+    font-family: "MuchiTitulos", sans-serif; 
+}
+
+.legal-body h1 {
+    font-size: clamp(30px, 5vw, 50px);
+    margin-bottom: 25px;
+    color: var(--principal);
+}
+
+body.dark-mode .legal-body h1 {
+    color: var(--acento);
+}
+
+.legal-body p {
+    font-size: 18px;
+    line-height: 1.7;
+    text-align: justify;
+    color: var(--texto);
+}
+
+.legal-body h2 {
+    font-size: clamp(20px, 3.5vw, 28px);
+    margin-top: 35px;
+    margin-bottom: 15px;
+    color: var(--secundario);
+}
+
+body.dark-mode .legal-body h2 {
+    color: var(--claro1);
+}
+
+.fecha-actualizacion {
+    margin-top: 30px;
+}
+
+/* Forzar clicks, prioridad visual y mano de selección en el logo */
+#logoHome {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    position: relative !important;
+    z-index: 999 !important;
+}
+
+#logoHome img {
+    pointer-events: none;
+    user-select: none;
+}
